@@ -1,7 +1,6 @@
 
 @extends('master')
 
-
 @section('content')
 <?php 
 use App\User;
@@ -65,3 +64,4 @@ $(document).ready(function(){
 });
 </script>
 @endsection
+

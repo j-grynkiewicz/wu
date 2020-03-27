@@ -1,6 +1,5 @@
 @extends('master')
 
-
 @section('content')
 <div class="row">
  <div class="col-md-12">
@@ -40,7 +39,7 @@
     <input type="password" name="password" class="form-control" placeholder="Wprowadź hasło" />
    </div>
    <div class="form-group">
-    <input type="number" name="type" class="form-control" placeholder="Wprowadź typ konta" min="1" max="4" />
+    <input type="number" name="type" class="form-control" placeholder="Wprowadź typ konta 1-admin 2-dziekan 3-wykladowca 4-student" min="1" max="4" />
    </div>
    <div class="form-group">
     <input type="submit" class="btn btn-primary" />
@@ -49,3 +48,4 @@
  </div>
 </div>
 @endsection
+

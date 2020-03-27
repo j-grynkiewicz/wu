@@ -1,6 +1,5 @@
 @extends('master')
 
-
 @section('content')
 
 <div class="row">
@@ -31,6 +30,7 @@
     <input type="email" name="email" class="form-control" value="{{$user->email}}" placeholder="Enter Email Address"  />
    </div>
    <div class="form-group">
+   Grupa Studencka:
     <input type="number" name="group_id" class="form-control" value="{{$user->group_id}}" placeholder="Enter Group Number" />
    </div>
    <div class="form-group">
@@ -41,3 +41,5 @@
 </div>
 
 @endsection
+
+
