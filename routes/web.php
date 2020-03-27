@@ -31,3 +31,17 @@ Route::namespace('Auth\Login')
     Route::post('logout', 'WorkerController@logout')->name('logout');
       });
  });
+ Route::resource('user', 'UserController');
+ Route::get('/students', function () {
+    return view('user.students');
+});
+Route::get('/deans', function () {
+    return view('user.deans');
+});
+Route::get('/teachers', function () {
+    return view('user.teachers');
+});
+Route::get('editStudents', array('uses' => 'UserController@editStudents'));
+Route::resource('student', 'StudentController');
+Route::resource('group', 'GroupController');
+Route::get('/members/{id}', 'GroupController@members');

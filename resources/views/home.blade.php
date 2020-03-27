@@ -14,21 +14,25 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @if(auth()->user()->isAdmin == 1)
+                    @if(auth()->user()->type == 1)
                         <div class=”panel-body”>
                             Jesteś Adminem
+                            <br>
+                            <a href="/user" class="btn btn-primary">Użytkownicy</a>
+                            <br>
+                            <a href="/group" class="btn btn-primary">Grupy</a>
                     @endif
-                    @if(auth()->user()->isStudent == 1)
+                    @if(auth()->user()->type == 2)
                         <div class=”panel-body”>
-                            Jesteś Studentem
+                            Jesteś Dziekanem
                     @endif
-                    @if(auth()->user()->isTeacher == 1)
+                    @if(auth()->user()->type == 3)
                         <div class=”panel-body”>
                             Jesteś Wykładowcą
                     @endif
-                    @if(auth()->user()->isDean == 1)
+                    @if(auth()->user()->type == 4)
                         <div class=”panel-body”>
-                            Jesteś Dziekanem
+                            Jesteś Studentem
                     @endif
                 </div>
             </div>
