@@ -16,6 +16,7 @@ $users = User::all()->toArray(); ?>
    <p>{{$message}}</p>
   </div>
   @endif
+  
   <div align="right">
    <a href="{{route('teacher.create')}}" class="btn btn-primary">Add</a>
    <br />
