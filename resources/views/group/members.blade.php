@@ -53,6 +53,7 @@ $group = Group::find($id);
    @endif
    @endforeach
  
+ 
   </table>
   Studenci
   <table class="table table-bordered table-striped">

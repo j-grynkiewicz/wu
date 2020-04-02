@@ -7,6 +7,7 @@ use App\Department;
 use App\User;
 use App\Group;
 
+
 class DepartmentController extends Controller
 {
     /**

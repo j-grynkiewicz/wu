@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Group;
 use App\User;
 
+
 class GroupController extends Controller
 {
     /**

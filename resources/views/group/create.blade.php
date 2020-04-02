@@ -8,6 +8,7 @@ use App\Department;
 use App\Group;
 $deps = Department::all();
 
+
  ?>
 <div class="row">
  <div class="col-md-12">
