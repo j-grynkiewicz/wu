@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class DeanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,16 +18,9 @@ class UserController extends Controller
         return view('user.index', compact('users'));
     }
 
-    
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('user.create');
+        return view('user.createDeans');
     }
  
     /**
@@ -38,13 +31,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $type = 2;
         $this->validate($request, [
             'first_name'    =>  'required',
             'last_name'     =>  'required',
             'username'     =>  'required|unique:users',
             'email'     =>  'required|unique:users',
             'password'     =>  'required',
-            'type'     =>  'required'
+            
+            
         ]);
         $user = new User([
             'first_name'    =>  $request->get('first_name'),
@@ -52,19 +47,15 @@ class UserController extends Controller
             'username'     =>  $request->get('username'),
             'email'     =>  $request->get('email'),
             'password'     =>  Hash::make($request['password']),
-            'type'     =>  $request->get('type')
+            'type'     =>  $type
+        
 
         ]);
         $user->save();
         return redirect()->route('user.index')->with('success', 'Data Added');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //
@@ -79,7 +70,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('user.edit', compact('user', 'id'));
+        return view('user.editDeans', compact('user', 'id'));
     }
 
     /**
@@ -95,21 +86,23 @@ class UserController extends Controller
             'first_name'    =>  'required',
             'last_name'     =>  'required',
             'email'     =>  'required',
+            'dep_id'     =>  'required',
            
         ]);
         $user = User::find($id);
         $user->first_name = $request->get('first_name');
         $user->last_name = $request->get('last_name');
         $user->email = $request->get('email');
+        $user->dep_id = $request->get('dep_id');
         $user->save();
         return redirect()->route('user.index')->with('success', 'Data Updated');
     }
 
 
-    public function editStudents($id)
+    public function editDeans($id)
     {
         $user = User::find($id);
-        return view('user.editStudents');
+        return view('user.editDeans');
     }
 
     /**
@@ -119,12 +112,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateStudents(Request $request, $id)
+    public function updateDeans(Request $request, $id)
     {
         $this->validate($request, [
             'first_name'    =>  'required',
             'last_name'     =>  'required',
-            'email'     =>  'required|unique:users',
+            'email'     =>  'required',
             'group_id'     =>  'required',
            
         ]);

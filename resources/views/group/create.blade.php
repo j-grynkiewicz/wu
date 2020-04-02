@@ -3,6 +3,12 @@
 
 
 @section('content')
+<?php 
+use App\Department;
+use App\Group;
+$deps = Department::all();
+
+ ?>
 <div class="row">
  <div class="col-md-12">
   <br />
@@ -28,7 +34,12 @@
    <div class="form-group">
     <input type="text" name="name" class="form-control" placeholder="Enter Name" />
    </div>
-  
+   Wydział:
+   <select name="dep_id">
+    @foreach($deps as $dep)
+        <option value="{{ $dep->id }}">{{ $dep->name}}</option>
+    @endforeach 
+</select>
    <div class="form-group">
     <input type="submit" class="btn btn-primary" />
    </div>

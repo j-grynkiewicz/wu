@@ -21,7 +21,7 @@
   </div>
   @endif
 
-  <form method="post" action="{{url('user')}}">
+  <form method="post" action="{{url('dean')}}">
    {{csrf_field()}}
    <div class="form-group">
     <input type="text" name="first_name" class="form-control" placeholder="Wprowadź imię" />
@@ -48,9 +48,7 @@
                                     </span>
                                 @enderror
    </div>
-   <div class="form-group">
-    <input type="number" name="type" class="form-control" placeholder="4" min="4" max="4" />
-   </div>
+   
    <div class="form-group">
     <input type="submit" class="btn btn-primary" />
    </div>

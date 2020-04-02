@@ -22,7 +22,7 @@ $groups = Group::all();
          @endforeach
          </ul>
   @endif
-  <form method="post" action="{{action('StudentController@update', $id)}}">
+  <form method="post" action="{{action('TeacherController@update', $id)}}">
    {{csrf_field()}}
    <input type="hidden" name="_method" value="PATCH" />
    <div class="form-group">

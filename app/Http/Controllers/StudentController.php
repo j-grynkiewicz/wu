@@ -3,10 +3,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Group;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +20,42 @@ class StudentController extends Controller
         return view('user.index', compact('users'));
     }
 
-    
+    public function create()
+    {
+        return view('user.createStudents');
+    }
+ 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $type = 4;
+        $this->validate($request, [
+            'first_name'    =>  'required',
+            'last_name'     =>  'required',
+            'username'     =>  'required|unique:users',
+            'email'     =>  'required|unique:users',
+            'password'     =>  'required',
+        
+            
+        ]);
+        $user = new User([
+            'first_name'    =>  $request->get('first_name'),
+            'last_name'     =>  $request->get('last_name'),
+            'username'     =>  $request->get('username'),
+            'email'     =>  $request->get('email'),
+            'password'     =>  Hash::make($request['password']),
+            'type'     =>  $type
+        
+
+        ]);
+        $user->save();
+        return redirect()->route('user.index')->with('success', 'Data Added');
+    }
 
    
     public function show($id)
@@ -82,7 +119,7 @@ class StudentController extends Controller
         $this->validate($request, [
             'first_name'    =>  'required',
             'last_name'     =>  'required',
-            'email'     =>  'required',
+            'email'     =>  'required|unique:users',
             'group_id'     =>  'required',
            
         ]);

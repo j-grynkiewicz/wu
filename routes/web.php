@@ -45,3 +45,8 @@ Route::get('editStudents', array('uses' => 'UserController@editStudents'));
 Route::resource('student', 'StudentController');
 Route::resource('group', 'GroupController');
 Route::get('/members/{id}', 'GroupController@members');
+Route::get('/groups/{id}', 'DepartmentController@members');
+Route::get('/deans/{id}', 'DepartmentController@deans');
+Route::resource('dean', 'DeanController');
+Route::resource('teacher', 'TeacherController');
+Route::resource('department', 'DepartmentController');

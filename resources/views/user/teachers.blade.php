@@ -17,7 +17,7 @@ $users = User::all()->toArray(); ?>
   </div>
   @endif
   <div align="right">
-   <a href="{{route('user.create')}}" class="btn btn-primary">Add</a>
+   <a href="{{route('teacher.create')}}" class="btn btn-primary">Add</a>
    <br />
    <br />
   </div>
@@ -35,7 +35,7 @@ $users = User::all()->toArray(); ?>
     <td>{{$row['username']}}</td>
     <td>{{$row['first_name']}}</td>
     <td>{{$row['last_name']}}</td>
-    <td><a href="{{action('UserController@edit', $row['id'])}}" class="btn btn-warning">Edit</a></td>
+    <td><a href="{{action('TeacherController@edit', $row['id'])}}" class="btn btn-warning">Edit</a></td>
     <td>
      <form method="post" class="delete_form" action="{{action('UserController@destroy', $row['id'])}}">
       {{csrf_field()}}

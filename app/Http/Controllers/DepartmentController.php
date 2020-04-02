@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Group;
+use App\Department;
 use App\User;
 
-class GroupController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Group::all()->toArray();
-        return view('group.index', compact('groups'));
+        $departments = Department::all()->toArray();
+        return view('department.index', compact('departments'));
     }
 
     /**
@@ -26,13 +26,19 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('group.create');
+        return view('department.create');
     }
     public function members($id)
     {
-        $group = Group::find($id);
-        $users = User::all()->toArray();
-        return view('group.members', compact('group', 'id'));
+        $department = Department::find($id);
+        $groups = Group::all()->toArray();
+        return view('department.members', compact('department', 'id'));
+    }
+    public function deans($id)
+    {
+        $department = Department::find($id);
+        $groups = User::all()->toArray();
+        return view('department.deans', compact('department', 'id'));
     }
 
     /**
@@ -44,18 +50,18 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'    =>  'required|unique:groups',
+            'name'    =>  'required|unique:departments',
             'dep_id'    =>  'required',
             
             
         ]);
-        $group = new Group([
+        $department = new Department([
             'name'    =>  $request->get('name'),
             'dep_id'    =>  $request->get('dep_id'),
       
         ]);
-        $group->save();
-        return redirect()->route('group.index')->with('success', 'Data Added');
+        $department->save();
+        return redirect()->route('department.index')->with('success', 'Data Added');
     }
 
     /**
@@ -77,8 +83,8 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        $group = Group::find($id);
-        return view('group.edit', compact('group', 'id'));
+        $department = Department::find($id);
+        return view('department.edit', compact('department', 'id'));
     }
 
     /**
@@ -92,16 +98,13 @@ class GroupController extends Controller
     {
         $this->validate($request, [
             'name'    =>  'required',
-            'dep_id'    =>  'required',
  
         ]);
-        $group = Group::find($id);
-        $group->name = $request->get('name');
-        $group->dep_id = $request->get('dep_id');
-        
+        $department = Department::find($id);
+        $department->name = $request->get('name');
    
-        $group->save();
-        return redirect()->route('group.index')->with('success', 'Data Updated');
+        $department->save();
+        return redirect()->route('department.index')->with('success', 'Data Updated');
     }
 
     /**
@@ -112,8 +115,8 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        $group = Group::find($id);
-        $group->delete();
-        return redirect()->route('group.index')->with('success', 'Data Deleted');
+        $department = Department::find($id);
+        $department->delete();
+        return redirect()->route('department.index')->with('success', 'Data Deleted');
     }
 }

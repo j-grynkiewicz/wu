@@ -15,7 +15,6 @@
   </div>
   @endif
   <div align="center">
-   <a href="{{route('user.create')}}" class="btn btn-primary">Dodaj</a>
    <br />
    <br />
    <a href="/students" class="btn btn-primary">Studenci</a>
@@ -24,7 +23,9 @@
    <a href="/teachers" class="btn btn-primary">Wykładowcy</a>
    <br />
    <br />
+   @if(auth()->user()->type == 1)
    <a href="/deans" class="btn btn-primary">Dziekani</a>
+   @endif
   </div>
   
 @endsection

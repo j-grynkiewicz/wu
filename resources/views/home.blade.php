@@ -21,10 +21,18 @@
                             <a href="/user" class="btn btn-primary">Użytkownicy</a>
                             <br>
                             <a href="/group" class="btn btn-primary">Grupy</a>
+                            <br>
+                            <a href="/department" class="btn btn-primary">Wydziały</a>
                     @endif
                     @if(auth()->user()->type == 2)
                         <div class=”panel-body”>
                             Jesteś Dziekanem
+                            <br>
+                            <a href="/user" class="btn btn-primary">Użytkownicy</a>
+                            <br>
+                            <a href="/group" class="btn btn-primary">Grupy</a>
+                            <br>
+                            <a href="/department" class="btn btn-primary">Grupy</a>
                     @endif
                     @if(auth()->user()->type == 3)
                         <div class=”panel-body”>
