@@ -1,6 +1,5 @@
 @extends('master')
 
-
 @section('content')
 <?php 
 use App\User;
