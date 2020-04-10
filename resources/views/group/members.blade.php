@@ -6,8 +6,10 @@
 <?php 
 use App\User;
 use App\Group;
+use App\Lecture;
 $users = User::all()->toArray();
 $group = Group::find($id);
+$lectures = Lecture::all()->toArray();
  ?>
 <div class="row">
  <div class="col-md-12">
@@ -82,7 +84,33 @@ $group = Group::find($id);
    @endforeach
  
   </table>
+  Przedmioty
+  <table class="table table-bordered table-striped">
+   <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>ECTS</th>
+
+   </tr>
+ <?php
+
+
+ ?>
+   @foreach($lectures as $row)
+   @if($row['group_id']==$id)
+   
+   <tr>
+    <td>{{$row['name']}}</td>
+    <td>{{$row['type']}}</td>
+    <td>{{$row['ects']}}</td>
+    
+    </td>
+   </tr>
   
+   @endif
+   @endforeach
+ 
+  </table>
   
   
  </div>

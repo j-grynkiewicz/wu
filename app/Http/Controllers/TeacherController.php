@@ -39,7 +39,7 @@ class TeacherController extends Controller
             'username'     =>  'required|unique:users',
             'email'     =>  'required|unique:users',
             'password'     =>  'required',
-            
+            'group_id'     =>  'required',
             
         ]);
         $user = new User([
@@ -48,6 +48,7 @@ class TeacherController extends Controller
             'username'     =>  $request->get('username'),
             'email'     =>  $request->get('email'),
             'password'     =>  Hash::make($request['password']),
+            'group_id'     =>  $request->get('group_id'),
             'type'     =>  $type
         
 

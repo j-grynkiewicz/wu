@@ -17,7 +17,7 @@ $users = User::all()->toArray(); ?>
   </div>
   @endif
   <div align="right">
-   <a href="{{route('dean.create')}}" class="btn btn-primary">Add</a>
+   <a href="{{action('DeanController@create')}}" class="btn btn-primary">Add</a>
    <br />
    <br />
   </div>

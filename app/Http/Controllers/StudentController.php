@@ -40,7 +40,8 @@ class StudentController extends Controller
             'username'     =>  'required|unique:users',
             'email'     =>  'required|unique:users',
             'password'     =>  'required',
-        
+            'group_id'     =>  'required',
+            'dep_id'     =>  'required',
             
         ]);
         $user = new User([
@@ -49,6 +50,8 @@ class StudentController extends Controller
             'username'     =>  $request->get('username'),
             'email'     =>  $request->get('email'),
             'password'     =>  Hash::make($request['password']),
+            'group_id'     =>  $request->get('group_id'),
+            'dep_id'     =>  $request->get('dep_id'),
             'type'     =>  $type
         
 
@@ -90,12 +93,14 @@ class StudentController extends Controller
             'email'     =>  'required',
             'group_id'     =>  'required',
            
+           
         ]);
         $user = User::find($id);
         $user->first_name = $request->get('first_name');
         $user->last_name = $request->get('last_name');
         $user->email = $request->get('email');
         $user->group_id = $request->get('group_id');
+       
         $user->save();
         return redirect()->route('user.index')->with('success', 'Data Updated');
     }
@@ -121,6 +126,7 @@ class StudentController extends Controller
             'last_name'     =>  'required',
             'email'     =>  'required|unique:users',
             'group_id'     =>  'required',
+            
            
         ]);
         $user = User::find($id);

@@ -23,11 +23,26 @@
   <table class="table table-bordered table-striped">
    <tr>
     <th> Name</th>
-    <th> Members</th>
+    <th> More</th>
     <th>Edit</th>
     <th>Delete</th>
    </tr>
    @foreach($groups as $row)
+   @if(auth()->user()->type == 1)
+   <tr>
+    <td>{{$row['name']}}</td>
+    <td><a href="{{action('GroupController@members', $row['id'])}}" class="btn btn-warning">More</a></td>
+    <td><a href="{{action('GroupController@edit', $row['id'])}}" class="btn btn-warning">Edit</a></td>
+    <td>
+     <form method="post" class="delete_form" action="{{action('GroupController@destroy', $row['id'])}}">
+      {{csrf_field()}}
+      <input type="hidden" name="_method" value="DELETE" />
+      <button type="submit" class="btn btn-danger">Delete</button>
+     </form>
+    </td>
+   </tr>
+   @elseif(auth()->user()->type == 2)
+   @if(auth()->user()->dep_id == $row['dep_id'])
    <tr>
     <td>{{$row['name']}}</td>
     <td><a href="{{action('GroupController@members', $row['id'])}}" class="btn btn-warning">Members</a></td>
@@ -40,6 +55,8 @@
      </form>
     </td>
    </tr>
+   @endif
+   @endif
    @endforeach
   </table>
  </div>

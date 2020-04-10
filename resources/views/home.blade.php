@@ -23,6 +23,8 @@
                             <a href="/group" class="btn btn-primary">Grupy</a>
                             <br>
                             <a href="/department" class="btn btn-primary">Wydziały</a>
+                            <br>
+                            <a href="/lecture" class="btn btn-primary">Zajęcia</a>
                     @endif
                     @if(auth()->user()->type == 2)
                         <div class=”panel-body”>
@@ -32,7 +34,9 @@
                             <br>
                             <a href="/group" class="btn btn-primary">Grupy</a>
                             <br>
-                            <a href="/department" class="btn btn-primary">Grupy</a>
+                            <a href="/department" class="btn btn-primary">Wydziały</a>
+                            <br>
+                            <a href="/lecture" class="btn btn-primary">Zajęcia</a>
                     @endif
                     @if(auth()->user()->type == 3)
                         <div class=”panel-body”>

@@ -29,7 +29,7 @@ $deps = Department::all();
    <p>{{ \Session::get('success') }}</p>
   </div>
   @endif
-
+  @if(auth()->user()->type == 1)
   <form method="post" action="{{url('group')}}">
    {{csrf_field()}}
    <div class="form-group">
@@ -47,4 +47,26 @@ $deps = Department::all();
   </form>
  </div>
 </div>
+@endif
+@if(auth()->user()->type == 2)
+<form method="post" action="{{url('group')}}">
+   {{csrf_field()}}
+   <div class="form-group">
+    <input type="text" name="name" class="form-control" placeholder="Enter Name" />
+   </div>
+   Wydział:
+   <select name="dep_id">
+    @foreach($deps as $dep)
+    @if(auth()->user()->dep_id == $dep['id'])
+        <option value="{{ $dep->id }}">{{ $dep->name}}</option>
+        @endif
+    @endforeach 
+</select>
+   <div class="form-group">
+    <input type="submit" class="btn btn-primary" />
+   </div>
+  </form>
+ </div>
+</div>
+@endif
 @endsection

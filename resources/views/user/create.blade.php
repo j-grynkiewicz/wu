@@ -48,6 +48,11 @@
                                     </span>
                                 @enderror
    </div>
+   <select name="dep_id">
+    @foreach($deps as $dep)
+        <option value="{{ $dep->id }}">{{ $dep->name}}</option>
+    @endforeach 
+</select>
    <div class="form-group">
     <input type="number" name="type" class="form-control" placeholder="4" min="4" max="4" />
    </div>

@@ -1,6 +1,12 @@
 @extends('master')
 
 @section('content')
+<?php 
+use App\User;
+use App\Department;
+$deps = Department::all();
+
+ ?>
 <div class="row">
  <div class="col-md-12">
   <br />
@@ -48,7 +54,14 @@
                                     </span>
                                 @enderror
    </div>
-   
+   <div class="form-group">
+   Grupa Studencka:
+   <select name="dep_id">
+    @foreach($deps as $dep)
+        <option value="{{ $dep->id }}">{{ $dep->name}}</option>
+    @endforeach 
+</select>
+</div>
    <div class="form-group">
     <input type="submit" class="btn btn-primary" />
    </div>

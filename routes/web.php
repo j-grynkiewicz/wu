@@ -50,3 +50,4 @@ Route::get('/deans/{id}', 'DepartmentController@deans');
 Route::resource('dean', 'DeanController');
 Route::resource('teacher', 'TeacherController');
 Route::resource('department', 'DepartmentController');
+Route::resource('lecture', 'LectureController');

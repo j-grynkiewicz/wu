@@ -24,6 +24,7 @@ $groups = Group::all();
          @endforeach
          </ul>
   @endif
+  @if(auth()->user()->type == 1)
   <form method="post" action="{{action('TeacherController@update', $id)}}">
    {{csrf_field()}}
    <input type="hidden" name="_method" value="PATCH" />
@@ -49,6 +50,36 @@ $groups = Group::all();
     <input type="submit" class="btn btn-primary" value="Edit" />
    </div>
   </form>
+  @endif
+  @if(auth()->user()->type == 2)
+  <form method="post" action="{{action('TeacherController@update', $id)}}">
+   {{csrf_field()}}
+   <input type="hidden" name="_method" value="PATCH" />
+   <div class="form-group">
+    <input type="text" name="first_name" class="form-control" value="{{$user->first_name}}" placeholder="Enter First Name" />
+   </div>
+   <div class="form-group">
+    <input type="text" name="last_name" class="form-control" value="{{$user->last_name}}" placeholder="Enter Last Name" />
+   </div>
+   <div class="form-group">
+    <input type="email" name="email" class="form-control" value="{{$user->email}}" placeholder="Enter Email Address"  />
+   </div>
+   <div class="form-group">
+   Grupa Studencka:
+   <select name="group_id">
+    @foreach($groups as $group)
+    @if(auth()->user()->dep_id == $group['dep_id'])
+        <option value="{{ $group->id }}">{{ $group->name}}</option>
+        @endif
+    @endforeach 
+</select>
+    
+   </div>
+   <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Edit" />
+   </div>
+  </form>
+  @endif
  </div>
 </div>
 

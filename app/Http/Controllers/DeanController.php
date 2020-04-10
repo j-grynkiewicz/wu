@@ -38,7 +38,7 @@ class DeanController extends Controller
             'username'     =>  'required|unique:users',
             'email'     =>  'required|unique:users',
             'password'     =>  'required',
-            
+            'dep_id'     =>  'required',
             
         ]);
         $user = new User([
@@ -47,7 +47,9 @@ class DeanController extends Controller
             'username'     =>  $request->get('username'),
             'email'     =>  $request->get('email'),
             'password'     =>  Hash::make($request['password']),
+            'dep_id'     =>  $request->get('dep_id'),
             'type'     =>  $type
+            
         
 
         ]);
