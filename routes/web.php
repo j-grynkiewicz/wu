@@ -51,3 +51,4 @@ Route::resource('dean', 'DeanController');
 Route::resource('teacher', 'TeacherController');
 Route::resource('department', 'DepartmentController');
 Route::resource('lecture', 'LectureController');
+Route::resource('grade', 'GradeController');

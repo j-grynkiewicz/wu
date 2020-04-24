@@ -77,6 +77,7 @@ $groups = Group::all();
    <select name="group_id">
     @foreach($groups as $group)
     @if(auth()->user()->dep_id == $group['dep_id'])
+    
         <option value="{{ $group->id }}">{{ $group->name}}</option>
         @endif
     @endforeach 

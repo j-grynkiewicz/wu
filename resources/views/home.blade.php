@@ -24,6 +24,8 @@
                             <a href="/department" class="btn btn-primary">Wydziały</a>
                             <br>
                             <a href="/lecture" class="btn btn-primary">Zajęcia</a>
+                            <br>
+                            <a href="/grade" class="btn btn-primary">Oceny</a>
                     @endif
                     @if(auth()->user()->type == 2)
                         <div class=”panel-body”>
@@ -40,10 +42,14 @@
                     @if(auth()->user()->type == 3)
                         <div class=”panel-body”>
                             Jesteś Wykładowcą
+                            <br>
+                            <a href="/grade" class="btn btn-primary">Oceny</a>
                     @endif
                     @if(auth()->user()->type == 4)
                         <div class=”panel-body”>
                             Jesteś Studentem
+                            <br>
+                            <a href="/grade" class="btn btn-primary">Oceny</a>
                     @endif
                 </div>
             </div>

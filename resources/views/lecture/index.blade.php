@@ -3,7 +3,7 @@
 @section('content')
 <?php 
 use App\User;
-
+use App\Grades;
 use App\Group;
 $users = User::all()->toArray();
 

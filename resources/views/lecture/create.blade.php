@@ -4,6 +4,7 @@
 @section('content')
 <?php 
 use App\Group;
+use App\Grades;
 use App\Lecture;
 $groups = Group::all();
 
